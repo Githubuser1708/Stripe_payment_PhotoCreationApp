@@ -15,8 +15,15 @@ The application combines:
 - 🎬 Cinematic vibes available in the application
 - 🤖 AI-generated image transformation
 
-The result is a new AI-generated image that places the person in a cinematic environment, wearing the selected outfit and posing naturally according to the selected vibe.
+The result is a new AI-generated image that places the person in a cinematic environment, wearing the selected outfit and posing naturally according to the selected vibe, with custom prompt to fine tune the details of the photo.
 
+**Workflow of the PhotoCreation**
+## 🧠 How It Works
+</>
+<div align="center">
+<img width="1200" height="900" alt="GHBanner" src="https://github.com/Githubuser1708/CinematicPhotos/blob/main/blob/workflow.jpg"/>
+</div>
+</>
 
 ## 🚀 Features
 
@@ -40,7 +47,7 @@ The result is a new AI-generated image that places the person in a cinematic env
 
 ### 📸 Upload Your Photo
 
-Users can upload:
+Users can upload up to 3 photos:
 
 - Headshots
 - Full-body photos
@@ -48,7 +55,7 @@ Users can upload:
 
 The AI uses the uploaded image as a reference for generating the final cinematic image.
 
-### 👕 Select an Outfit
+### 👕 Select an Outfit (Optional)
 
 Users can select an outfit or fashion style available in the application.
 
@@ -76,20 +83,3 @@ The AI combines the user's:
 
 It then generates a cinematic image showing the person wearing the selected outfit and naturally posed within a visually immersive environment based on the selected vibe.
 
-
-
-
-## 🧠 How It Works
-
-The basic workflow is:
-
-```text
-User Uploads Photo
-        ↓
-Select Outfit
-        ↓
-Select Cinematic Vibe
-        ↓
-AI Image Generation
-        ↓
-Cinematic Photo Output
