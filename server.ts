@@ -12,6 +12,70 @@ const storage = new Storage();
 const bucketName = process.env.GCS_BUCKET_NAME || 'my-secure-bucket';
 const bucket = storage.bucket(bucketName);
 
+/**
+ * Processes the raw AI generated image for high-resolution delivery.
+ * By default (or when ENABLE_HIGH_RES_UPSCALE=true), upscales the image to 3584x4800 (17MP),
+ * applies adaptive unsharp masking, embeds 300 DPI metadata, and encodes high quality.
+ * Can be reverted to raw output by setting ENABLE_HIGH_RES_UPSCALE=false in environment variables.
+ */
+async function prepareHighResImageBuffer(rawBuffer: Buffer): Promise<{ buffer: Buffer; contentType: string }> {
+  const enableUpscale = process.env.ENABLE_HIGH_RES_UPSCALE !== "false";
+
+  if (!enableUpscale) {
+    return { buffer: rawBuffer, contentType: "image/png" };
+  }
+
+  try {
+    const highResBuffer = await sharp(rawBuffer)
+      .resize(3584, 4800, {
+        fit: "inside",
+        kernel: sharp.kernel.lanczos3,
+        withoutEnlargement: false,
+      })
+      .sharpen({
+        sigma: 1.0,
+        m1: 0.7,
+        m2: 1.5,
+      })
+      .jpeg({
+        quality: 98,
+        chromaSubsampling: "4:4:4",
+      })
+      .withMetadata({ density: 300 })
+      .toBuffer();
+
+    return { buffer: highResBuffer, contentType: "image/jpeg" };
+  } catch (err) {
+    console.warn("High-res upscaling failed, falling back to raw buffer:", err);
+    return { buffer: rawBuffer, contentType: "image/png" };
+  }
+}
+
+/**
+ * Creates an enticing, crisp retina preview for display in the app.
+ * Sized at 800px width with 85% JPEG quality and light sharpening,
+ * ensuring it looks sharp on all mobile and desktop screens while keeping
+ * the high-res 17MP print-ready file exclusively for paid download.
+ */
+async function createEnticingPreviewBuffer(imageBuffer: Buffer): Promise<Buffer> {
+  return await sharp(imageBuffer)
+    .resize(800, 1067, {
+      fit: "inside",
+      withoutEnlargement: true,
+      kernel: sharp.kernel.lanczos3,
+    })
+    .sharpen({
+      sigma: 0.8,
+      m1: 0.5,
+      m2: 1.2,
+    })
+    .jpeg({
+      quality: 85,
+      mozjpeg: true,
+    })
+    .toBuffer();
+}
+
 const app = express();
 const PORT = 3000;
 
@@ -148,6 +212,8 @@ app.post("/api/edit-image", async (req, res) => {
     ];
     let lastError: any = null;
 
+    const enhancedEditPrompt = `${prompt}. Maintain crisp photographic quality, sharp eye focus, natural skin texture with subtle pores, professional portrait lighting, clean high fidelity finish.`;
+
     for (const model of modelsToTry) {
       try {
         const response = await ai.models.generateContent({
@@ -160,7 +226,7 @@ app.post("/api/edit-image", async (req, res) => {
                   mimeType: mimeType || "image/png",
                 },
               },
-              { text: prompt },
+              { text: enhancedEditPrompt },
             ],
           },
         });
@@ -171,19 +237,16 @@ app.post("/api/edit-image", async (req, res) => {
             const imageBuffer = Buffer.from(base64Data, 'base64');
             const imageId = crypto.randomUUID();
             
-            // 1. Upload high-res to GCS securely
+            // 1. Prepare high-res (3584x4800, 300 DPI) and upload to GCS securely
+            const highResData = await prepareHighResImageBuffer(imageBuffer);
             const file = bucket.file(`${imageId}.png`);
-            await file.save(imageBuffer, {
-              contentType: 'image/png',
+            await file.save(highResData.buffer, {
+              contentType: highResData.contentType,
               resumable: false
             });
             
-            // 2. Create a smaller preview to send to the browser
-            // Watermarking could also be added here, but resizing is a good start.
-            const previewBuffer = await sharp(imageBuffer)
-              .resize(400) // Much smaller width for preview
-              .jpeg({ quality: 60 })
-              .toBuffer();
+            // 2. Create an enticing, crisp retina preview for the browser (800px @ 85% quality)
+            const previewBuffer = await createEnticingPreviewBuffer(imageBuffer);
               
             const previewBase64 = previewBuffer.toString('base64');
 
@@ -289,10 +352,10 @@ app.post("/api/generate-photo", async (req, res) => {
     });
 
     let promptText = `
-Generate a high-quality, professional cinematic photo based on these rules:
-1. Identity Preservation: Preserve the exact facial identity, eyes, nose, lips, hair, and natural skin tone from the reference photo(s).
+Generate an exceptionally high-quality, professional studio portrait photograph adhering to these directives:
+1. Identity Preservation: Strictly preserve the exact facial structure, eye shape and color, nose, lips, hair, bone structure, and natural skin tone from the reference photo(s).
 2. Style & Concept: ${styleDescription || "Cinematic soft decor studio portrait"}
-3. Quality: Ultra-detailed 8K photographic quality, professional lighting, rich color grading, sharp focus, beautiful depth of field.
+3. Photographic Quality & Camera Optics: Shot with an 85mm f/1.8 prime portrait lens, Rembrandt studio lighting, soft diffused rim light, subtle natural catchlights in the pupils, razor-sharp focus on the eyes and eyelashes, natural textured skin with visible pores (no artificial plastic smoothing or over-blurring), rich color grading, and elegant shallow depth of field.
 `;
 
     if (customPrompt) {
@@ -333,19 +396,16 @@ Generate a high-quality, professional cinematic photo based on these rules:
             const imageBuffer = Buffer.from(base64Data, 'base64');
             const imageId = crypto.randomUUID();
             
-            // 1. Upload high-res to GCS securely
+            // 1. Prepare high-res (3584x4800, 300 DPI) and upload to GCS securely
+            const highResData = await prepareHighResImageBuffer(imageBuffer);
             const file = bucket.file(`${imageId}.png`);
-            await file.save(imageBuffer, {
-              contentType: 'image/png',
+            await file.save(highResData.buffer, {
+              contentType: highResData.contentType,
               resumable: false
             });
             
-            // 2. Create a smaller preview to send to the browser
-            // Watermarking could also be added here, but resizing is a good start.
-            const previewBuffer = await sharp(imageBuffer)
-              .resize(400) // Much smaller width for preview
-              .jpeg({ quality: 60 })
-              .toBuffer();
+            // 2. Create an enticing, crisp retina preview for the browser (800px @ 85% quality)
+            const previewBuffer = await createEnticingPreviewBuffer(imageBuffer);
               
             const previewBase64 = previewBuffer.toString('base64');
 
@@ -420,11 +480,12 @@ app.post("/api/verify-payment", async (req, res) => {
          return res.status(404).json({ error: "High-resolution image not found." });
       }
 
-      // Generate a signed URL that expires in 15 minutes
+      // Generate a signed URL that expires in 15 minutes with download attachment disposition
       const [url] = await file.getSignedUrl({
         version: 'v4',
         action: 'read',
-        expires: Date.now() + 15 * 60 * 1000, 
+        expires: Date.now() + 15 * 60 * 1000,
+        responseDisposition: `attachment; filename="cinematic-photo-highres-${imageId.slice(0, 8)}.jpg"`,
       });
 
       return res.json({ downloadUrl: url });

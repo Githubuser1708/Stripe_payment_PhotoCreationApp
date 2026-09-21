@@ -322,8 +322,14 @@ const PreWeddingGen: React.FC<PreWeddingGenProps> = ({ onGenerateSuccess }) => {
                   <img
                     src={generatedImage}
                     alt="Generated Model Photo"
-                    className="w-full h-full object-contain"
+                    className="w-full h-full object-contain rounded-xl"
                   />
+
+                  {/* Subtle Studio Proof Badge */}
+                  <div className="absolute top-4 left-4 bg-stone-900/80 backdrop-blur-md text-stone-200 border border-stone-700/60 px-3 py-1.5 rounded-full text-xs font-medium tracking-wide flex items-center gap-1.5 shadow-md">
+                    <span className="w-2 h-2 rounded-full bg-amber-400"></span>
+                    Studio Proof Preview
+                  </div>
 
                   {checkoutError && (
                     <div className="absolute top-4 left-4 right-4 bg-rose-500 text-white px-4 py-3 rounded-xl text-sm shadow-xl flex items-center justify-between z-10">
@@ -337,7 +343,10 @@ const PreWeddingGen: React.FC<PreWeddingGenProps> = ({ onGenerateSuccess }) => {
                     </div>
                   )}
 
-                  <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-stone-950/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex justify-end">
+                  <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-stone-950/90 via-stone-950/40 to-transparent flex items-center justify-between">
+                    <span className="text-xs text-stone-300 hidden sm:inline-block">
+                      Unlock 17MP Print-Ready Master (300 DPI)
+                    </span>
                     <button
                       disabled={isCheckingOut}
                       onClick={async () => {
