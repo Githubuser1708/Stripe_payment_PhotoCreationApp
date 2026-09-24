@@ -11,7 +11,6 @@ Built with **Google AI Studio**, this application allows users to upload a heads
 **URL : https://copy-photocreation.ai.studio**
 
 The application combines:
-
 - 👤 User-uploaded headshot or full-body photos
 - 👗 Selected outfits or fashion styles
 - 🎬 Cinematic vibes (Background / Locations) available in the application
@@ -24,22 +23,17 @@ The result is a new AI-generated image that places the person in a cinematic env
 
 1. User generates a photo. 
 2. Store the full-resolution image securely in private Google Cloud Storage (GCS_Bucket_Name) . 
-3. Send only a preview/lower-resolution image to the browser. 
-4. Give the image a unique imageId. 
 5. User clicks "Download High Res". 
 6. Create a NEW Stripe Checkout Session (TEST Mode). 
 7. Customer makes the payment. 
-8. Create a new /payment-success page. 
-9. The page reads the session_id. 
-10. The page calls a backend endpoint to verify the payment. 
-11. The backend retrieves the Checkout Session directly from Stripe using STRIPE_SECRET_KEY. 
-12. The backend checks: payment_status === "paid" 
-13. The backend gets the imageId from the Stripe session metadata. 
-14. Verify that the imageId exists and belongs to the stored image. 
-15. Generate a short-lived secure download URL for the private high-resolution image. 
-16. Return the download URL to the payment-success page. 
-17. Show: "Payment Successful" "Your high-resolution photo is ready." 
-18. Provide a: "Download High Resolution" button that downloads the high-resolution image.
+8. The backend retrieves the Checkout Session directly from Stripe using STRIPE_SECRET_KEY. 
+9. The backend checks: payment_status === "paid" 
+10. The backend gets the imageId from the Stripe session metadata. 
+11. Verify that the imageId exists and belongs to the stored image. 
+12. Generate a short-lived secure download URL for the private high-resolution image. 
+13. Return the download URL to the payment-success page. 
+14. Show: "Payment Successful" "Your high-resolution photo is ready." 
+15. Provide a: "Download High Resolution" button that downloads the high-resolution image.
 
 Workflow Diagram below
 
@@ -49,12 +43,35 @@ Workflow Diagram below
 </>
 
 
-
 ## 🚀 Features
+### Example of the CinematicPhoto App UI and Generated Photos based on uploaded sample photos
 
-### Example of the CinematicPhoto App UI and generated Photos
+Pre-Wedding Photos
+<div align="centre">
+<img width="300" height="450" alt="GHBanner" src="https://github.com/Githubuser1708/Stripe_payment_PhotoCreationApp/blob/main/blob/example1.png"/>
+</div>
 
+</>
 
+<div align="centre">
+<img width="300" height="450" alt="GHBanner" src="https://github.com/Githubuser1708/Stripe_payment_PhotoCreationApp/blob/main/blob/example2.png"/>
+</div>
+</>
+
+<div align="centre">
+<img width="300" height="450" alt="GHBanner" src="https://github.com/Githubuser1708/Stripe_payment_PhotoCreationApp/blob/main/blob/d5.png"/>
+</div>
+</>
+
+<div align="centre">
+<img width="300" height="450" alt="GHBanner" src="https://github.com/Githubuser1708/Stripe_payment_PhotoCreationApp/blob/main/blob/babyp.png"/>
+</div>
+</>
+
+<div align="centre">
+<img width="300" height="450" alt="GHBanner" src="https://github.com/Githubuser1708/Stripe_payment_PhotoCreationApp/blob/main/blob/babyp1.png"/>
+</div>
+</>
 
 ### 📸 Upload Your Photo
 
