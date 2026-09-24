@@ -19,13 +19,15 @@ The result is a new AI-generated image that places the person in a cinematic env
 
 **Workflow of the PhotoCreation**
 ## 🧠 How It Works
+
+
 </>
-</>
-<div align="center">
+
+<div align="left">
 <img width="300" height="450" alt="GHBanner" src="https://github.com/Githubuser1708/Stripe_payment_PhotoCreationApp/blob/main/blob/workflow.png"/>
 </div>
 </>
-</>
+
 
 
 ## 🚀 Features
