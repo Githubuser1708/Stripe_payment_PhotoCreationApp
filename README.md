@@ -22,7 +22,7 @@ The result is a new AI-generated image that places the person in a cinematic env
 </>
 </>
 <div align="center">
-<img width="600" height="450" alt="GHBanner" src="https://github.com/Githubuser1708/Stripe_payment_PhotoCreationApp/blob/main/blob/workflow.png"/>
+<img width="300" height="450" alt="GHBanner" src="https://github.com/Githubuser1708/Stripe_payment_PhotoCreationApp/blob/main/blob/workflow.png"/>
 </div>
 </>
 </>
