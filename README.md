@@ -19,6 +19,13 @@ The result is a new AI-generated image that places the person in a cinematic env
 
 **Workflow of the PhotoCreation**
 ## 🧠 How It Works
+</>
+</>
+<div align="center">
+<img width="1200" height="900" alt="GHBanner" src="https://github.com/Githubuser1708/CinematicPhotos/blob/main/blob/workflow.png"/>
+</div>
+</>
+</>
 
 
 ## 🚀 Features
