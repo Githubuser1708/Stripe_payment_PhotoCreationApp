@@ -48,7 +48,7 @@ Workflow Diagram below
 
 Pre-Wedding Photos
 <div align="centre">
-<img width="300" height="450" alt="GHBanner" src="https://github.com/Githubuser1708/Stripe_payment_PhotoCreationApp/blob/main/blob/example1.png"/>
+<img width="1200" height="900" alt="GHBanner" src="https://github.com/Githubuser1708/Stripe_payment_PhotoCreationApp/blob/main/blob/example1.png"/>
 </div>
 
 </>
