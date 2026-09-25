@@ -64,7 +64,7 @@ Wedding Photoshoots
 
 Actual Generated Photo
 <div align="centre">
-<img width="600" height="500" alt="Wedding" src="https://github.com/Githubuser1708/Stripe_payment_PhotoCreationApp/blob/main/blob/d5.jpg"/>
+<img width="500" height="500" alt="Wedding" src="https://github.com/Githubuser1708/Stripe_payment_PhotoCreationApp/blob/main/blob/d5.jpg"/>
 </div>
 
 Baby Photoshoots
