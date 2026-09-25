@@ -18,7 +18,7 @@ The application combines:
 
 The result is a new AI-generated image that places the person in a cinematic environment, wearing the selected outfit and posing naturally according to the selected vibe, with custom prompt to fine tune the details of the photo.
 
-## **Workflow of the PhotoCreation**
+## **Workflow of the PhotoCreation with STRIPE PAYMENT**
 ## 🧠 How It Works 
 
 1. User generates a photo. 
