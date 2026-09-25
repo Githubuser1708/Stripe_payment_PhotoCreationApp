@@ -24,12 +24,12 @@ The result is a new AI-generated image that places the person in a cinematic env
 1. User generates a photo. 
 2. Store the full-resolution image securely in private Google Cloud Storage (GCS_Bucket_Name) . 
 5. User clicks "Download High Res". 
-6. Create a NEW Stripe Checkout Session (TEST Mode). 
+6. Create a NEW Stripe Checkout Session (in TEST Sandbox). 
 7. Customer makes the payment. 
 8. The backend retrieves the Checkout Session directly from Stripe using STRIPE_SECRET_KEY. 
 9. The backend checks: payment_status === "paid" 
-10. The backend gets the imageId from the Stripe session metadata. 
-11. Verify that the imageId exists and belongs to the stored image. 
+10. The backend gets the imageId from the Stripe session metadata, URL : STRIPE_WEBHOOK_SECRET. 
+11. Verification done. 
 12. Generate a short-lived secure download URL for the private high-resolution image. 
 13. Return the download URL to the payment-success page. 
 14. Show: "Payment Successful" "Your high-resolution photo is ready." 
@@ -54,22 +54,17 @@ Pre-Wedding Photos
 </>
 
 <div align="centre">
-<img width="300" height="450" alt="GHBanner" src="https://github.com/Githubuser1708/Stripe_payment_PhotoCreationApp/blob/main/blob/example2.png"/>
+<img width="1200" height="900" alt="GHBanner" src="https://github.com/Githubuser1708/Stripe_payment_PhotoCreationApp/blob/main/blob/d5.png"/>
 </div>
 </>
 
 <div align="centre">
-<img width="300" height="450" alt="GHBanner" src="https://github.com/Githubuser1708/Stripe_payment_PhotoCreationApp/blob/main/blob/d5.png"/>
+<img width="1200" height="900" alt="GHBanner" src="https://github.com/Githubuser1708/Stripe_payment_PhotoCreationApp/blob/main/blob/babyp.png"/>
 </div>
 </>
 
 <div align="centre">
-<img width="300" height="450" alt="GHBanner" src="https://github.com/Githubuser1708/Stripe_payment_PhotoCreationApp/blob/main/blob/babyp.png"/>
-</div>
-</>
-
-<div align="centre">
-<img width="300" height="450" alt="GHBanner" src="https://github.com/Githubuser1708/Stripe_payment_PhotoCreationApp/blob/main/blob/babyp1.png"/>
+<img width="1200" height="900" alt="GHBanner" src="https://github.com/Githubuser1708/Stripe_payment_PhotoCreationApp/blob/main/blob/babyp1.png"/>
 </div>
 </>
 
@@ -113,6 +108,8 @@ It then generates a cinematic image showing the person wearing the selected outf
 
 Users can enter the testing Card Payment (Test mode) details provide by Stripe url https://docs.stripe.com/testing 
 Upon entering the card payment and successful payment verification
+
+
 
 
 ### 🖼️ Upon Successful Stripe Payment, User allowed to Download the high resolution image
