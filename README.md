@@ -35,13 +35,13 @@ The result is a new AI-generated image that places the person in a cinematic env
 14. Show: "Payment Successful" "Your high-resolution photo is ready." 
 15. Provide a: "Download High Resolution" button that downloads the high-resolution image.
 
-Upon Clicking <Download High Resolution> button, activates Stripe Payment Test mode pop up screen. 
+**Upon Clicking <Download High Resolution> button, activates Stripe Payment Test mode pop up screen.**
 <div align="left">
 <img width="700" height="500" alt="StripepaymentPopUP" src="https://github.com/Githubuser1708/Stripe_payment_PhotoCreationApp/blob/main/blob/stripepayment.png"/>
 </div>
 </>
 
-Upon Successful card payment, Verification status is successful. 
+**Upon Successful card payment, Verification status is successful.**
 <div align="left">
 <img width="700" height="500" alt="Stripepayment" src="https://github.com/Githubuser1708/Stripe_payment_PhotoCreationApp/blob/main/blob/stripepayment1.png"/>
 </div>
