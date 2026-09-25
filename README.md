@@ -18,7 +18,7 @@ The application combines:
 
 The result is a new AI-generated image that places the person in a cinematic environment, wearing the selected outfit and posing naturally according to the selected vibe, with custom prompt to fine tune the details of the photo.
 
-## **Workflow of the PhotoCreation with STRIPE PAYMENT**
+## **Workflow of the PhotoCreation with Stripe Payment (Test Sandbox)**
 ## 🧠 How It Works 
 
 1. User generates a photo. 
@@ -34,6 +34,18 @@ The result is a new AI-generated image that places the person in a cinematic env
 13. Return the download URL to the payment-success page. 
 14. Show: "Payment Successful" "Your high-resolution photo is ready." 
 15. Provide a: "Download High Resolution" button that downloads the high-resolution image.
+
+Upon Clicking <Download High Resolution> button, activates Stripe Payment Test mode pop up screen. 
+<div align="left">
+<img width="1000" height="600" alt="StripepaymentPopUP" src="https://github.com/Githubuser1708/Stripe_payment_PhotoCreationApp/blob/main/blob/stripepayment.png"/>
+</div>
+</>
+
+Upon Successful card payment, Verification status is successful. 
+<div align="left">
+<img width="1000" height="600" alt="Stripepayment" src="https://github.com/Githubuser1708/Stripe_payment_PhotoCreationApp/blob/main/blob/stripepayment1.png"/>
+</div>
+</>
 
 Workflow Diagram below
 
