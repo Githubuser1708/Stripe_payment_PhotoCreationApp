@@ -57,12 +57,12 @@ Workflow Diagram below
 
 ## 🚀 Features
 ### Example of the CinematicPhoto App UI and Generated Photos based on uploaded sample photos
-Wedding Photoshoots
+Wedding Photoshoot Generation
 <div align="centre">
 <img width="1200" height="900" alt="Wedding" src="https://github.com/Githubuser1708/Stripe_payment_PhotoCreationApp/blob/main/blob/example1.png"/>
 </div>
 
-Actual Generated Photo
+Downloaded Photo upon Payment
 <div align="centre">
 <img width="380" height="500" alt="Wedding" src="https://github.com/Githubuser1708/Stripe_payment_PhotoCreationApp/blob/main/blob/d5.jpg"/>
 </div>
