@@ -59,18 +59,21 @@ Workflow Diagram below
 ### Example of the CinematicPhoto App UI and Generated Photos based on uploaded sample photos
 Wedding Photoshoots
 <div align="centre">
-<img width="1200" height="900" alt="GHBanner" src="https://github.com/Githubuser1708/Stripe_payment_PhotoCreationApp/blob/main/blob/example1.png"/>
+<img width="1200" height="900" alt="Wedding" src="https://github.com/Githubuser1708/Stripe_payment_PhotoCreationApp/blob/main/blob/example1.png"/>
 </div>
 
+<div align="centre">
+<img width="1000" height="700" alt="Wedding" src="https://github.com/Githubuser1708/Stripe_payment_PhotoCreationApp/blob/main/blob/d5.png"/>
+</div>
 
 Baby Photoshoots
 <div align="centre">
-<img width="1200" height="900" alt="GHBanner" src="https://github.com/Githubuser1708/Stripe_payment_PhotoCreationApp/blob/main/blob/babyp.png"/>
+<img width="1200" height="900" alt="Babyshoot" src="https://github.com/Githubuser1708/Stripe_payment_PhotoCreationApp/blob/main/blob/babyp.png"/>
 </div>
 </>
 
 <div align="centre">
-<img width="1200" height="900" alt="GHBanner" src="https://github.com/Githubuser1708/Stripe_payment_PhotoCreationApp/blob/main/blob/babyp1.png"/>
+<img width="1200" height="900" alt="Babyshoot" src="https://github.com/Githubuser1708/Stripe_payment_PhotoCreationApp/blob/main/blob/babyp1.png"/>
 </div>
 </>
 
