@@ -58,6 +58,7 @@ Pre-Wedding Photos
 </div>
 </>
 
+Baby Photoshoots
 <div align="centre">
 <img width="1200" height="900" alt="GHBanner" src="https://github.com/Githubuser1708/Stripe_payment_PhotoCreationApp/blob/main/blob/babyp.png"/>
 </div>
@@ -67,6 +68,8 @@ Pre-Wedding Photos
 <img width="1200" height="900" alt="GHBanner" src="https://github.com/Githubuser1708/Stripe_payment_PhotoCreationApp/blob/main/blob/babyp1.png"/>
 </div>
 </>
+
+
 
 ### 📸 Upload Your Photo
 
