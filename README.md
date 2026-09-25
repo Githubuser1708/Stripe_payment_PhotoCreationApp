@@ -63,7 +63,7 @@ Wedding Photoshoots
 </div>
 
 <div align="centre">
-<img width="1000" height="700" alt="Wedding" src="https://github.com/Githubuser1708/Stripe_payment_PhotoCreationApp/blob/main/blob/d5.png"/>
+<img width="1000" height="700" alt="Wedding" src="https://github.com/Githubuser1708/Stripe_payment_PhotoCreationApp/blob/main/blob/d5.jpg"/>
 </div>
 
 Baby Photoshoots
