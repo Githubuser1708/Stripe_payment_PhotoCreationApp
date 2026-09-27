@@ -67,7 +67,15 @@ Wedding Photoshoot Generation
 </div>
 </>
 
+Family Photos Generation
+<div align="centre">
+<img width="1200" height="900" alt="Wedding" src="https://github.com/Githubuser1708/Stripe_payment_PhotoCreationApp/blob/main/blob/family.png"/>
+</div>
 
+<div align="centre">
+<img width="1200" height="900" alt="Wedding" src="https://github.com/Githubuser1708/Stripe_payment_PhotoCreationApp/blob/main/blob/family2.png"/>
+</div>
+</>
 Baby Photoshoots
 <div align="centre">
 <img width="1200" height="900" alt="Babyshoot" src="https://github.com/Githubuser1708/Stripe_payment_PhotoCreationApp/blob/main/blob/babyp.png"/>
