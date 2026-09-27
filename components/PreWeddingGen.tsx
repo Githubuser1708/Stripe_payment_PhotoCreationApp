@@ -140,87 +140,152 @@ const PreWeddingGen: React.FC<PreWeddingGenProps> = ({ onGenerateSuccess }) => {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
         {/* Left Column: Inputs */}
-        <div className="lg:col-span-5 space-y-12">
+        <div className="lg:col-span-5 space-y-6">
           {/* Model Upload */}
           <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-stone-200/50 shadow-xl">
-            <h3 className="text-lg font-medium text-stone-800 mb-4 flex items-center gap-2">
-              <User className="w-5 h-5 text-amber-500" />
-              Model Photo (Max 3)
-            </h3>
-            <div className="flex gap-4 overflow-x-auto pb-2">
-              {modelPhotos.map((photo, index) => (
-                <div
-                  key={index}
-                  className="relative shrink-0 w-24 h-24 rounded-lg overflow-hidden group border border-stone-700"
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-lg font-medium text-stone-800 flex items-center gap-2">
+                <User className="w-5 h-5 text-amber-500" />
+                Model Photo (Max 3)
+              </h3>
+              <span className="text-xs text-stone-500">
+                {modelPhotos.length}/3 uploaded
+              </span>
+            </div>
+
+            <div className="flex flex-col sm:flex-row items-center gap-5">
+              <div className="flex items-center gap-4 overflow-x-auto max-w-full pb-1">
+                {modelPhotos.map((photo, index) => (
+                  <div
+                    key={index}
+                    className="relative w-48 h-48 sm:w-44 sm:h-44 shrink-0 aspect-square rounded-xl overflow-hidden group border border-stone-300/80 bg-white/25 backdrop-blur-sm shadow-inner flex items-center justify-center p-2"
+                  >
+                    <img
+                      src={photo.preview}
+                      className="max-w-full max-h-full w-full h-full object-contain rounded-lg"
+                      alt={`Model reference ${index + 1}`}
+                    />
+                    <button
+                      onClick={() => removeModelPhoto(index)}
+                      className="absolute top-2 right-2 bg-black/65 text-white rounded-full p-1.5 hover:bg-amber-600 transition-colors shadow-md"
+                      title="Remove photo"
+                    >
+                      <X className="w-4 h-4" />
+                    </button>
+                  </div>
+                ))}
+                {modelPhotos.length < 3 && (
+                  <label className="w-48 h-48 sm:w-44 sm:h-44 shrink-0 aspect-square rounded-xl border-2 border-dashed border-stone-300 hover:border-amber-500 hover:bg-white/20 bg-white/5 backdrop-blur-sm flex flex-col items-center justify-center cursor-pointer transition-all p-4 text-center">
+                    <div className="w-10 h-10 rounded-full bg-amber-500/10 border border-amber-500/30 flex items-center justify-center mb-2.5">
+                      <Plus className="w-5 h-5 text-amber-600" />
+                    </div>
+                    <span className="text-xs font-medium text-stone-700">
+                      Add Model Photo
+                    </span>
+                    <span className="text-[11px] text-stone-500 mt-1">
+                      Square full-view frame
+                    </span>
+                    <input
+                      type="file"
+                      className="hidden"
+                      accept="image/*"
+                      multiple
+                      onChange={handleModelUpload}
+                    />
+                  </label>
+                )}
+              </div>
+
+              {modelPhotos.length === 0 && (
+                <div className="flex-1 text-center sm:text-left space-y-2">
+                  <p className="text-xs text-stone-600 leading-relaxed">
+                    Clear, front-facing model photos work best. You can upload up to 3 photos for stronger facial identity accuracy.
+                  </p>
+                </div>
+              )}
+            </div>
+
+            {modelPhotos.length > 0 && (
+              <p className="text-xs text-stone-600 mt-3">
+                Clear, front-facing model photos work best.
+              </p>
+            )}
+          </div>
+
+          {/* Outfit Reference (Optional) - Squarish Layout */}
+          <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-stone-200/50 shadow-xl">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-lg font-medium text-stone-800 flex items-center gap-2">
+                <Camera className="w-5 h-5 text-amber-500/80" />
+                Outfit Reference (Optional)
+              </h3>
+              {dressPhoto && (
+                <button
+                  onClick={() => setDressPhoto(null)}
+                  className="text-xs text-stone-500 hover:text-rose-600 transition-colors"
                 >
+                  Clear
+                </button>
+              )}
+            </div>
+
+            <div className="flex flex-col sm:flex-row items-center gap-5">
+              {dressPhoto ? (
+                <div className="relative w-48 h-48 sm:w-44 sm:h-44 shrink-0 aspect-square rounded-xl overflow-hidden border border-stone-300/80 bg-white/25 backdrop-blur-sm shadow-inner group flex items-center justify-center p-2">
                   <img
-                    src={photo.preview}
-                    className="w-full h-full object-cover"
-                    alt="model"
+                    src={dressPhoto.preview}
+                    className="max-w-full max-h-full w-full h-full object-contain rounded-lg"
+                    alt="Outfit reference"
                   />
                   <button
-                    onClick={() => removeModelPhoto(index)}
-                    className="absolute top-1 right-1 bg-black/60 text-white rounded-full p-0.5 hover:bg-amber-600 transition-colors"
+                    onClick={() => setDressPhoto(null)}
+                    className="absolute top-2 right-2 bg-black/65 text-white rounded-full p-1.5 hover:bg-amber-600 transition-colors shadow-md"
+                    title="Remove outfit photo"
                   >
-                    <X className="w-3 h-3" />
+                    <X className="w-4 h-4" />
                   </button>
                 </div>
-              ))}
-              {modelPhotos.length < 3 && (
-                <label className="shrink-0 w-24 h-24 rounded-lg border-2 border-dashed border-stone-300 hover:border-amber-500 hover:bg-stone-50 transition-all bg-white/5 backdrop-blur-sm flex flex-col items-center justify-center cursor-pointer transition-all">
-                  <Plus className="w-6 h-6 text-stone-400" />
-                  <span className="text-[10px] text-stone-500 mt-1">
-                    Add Photo
+              ) : (
+                <label className="w-48 h-48 sm:w-44 sm:h-44 shrink-0 aspect-square border-2 border-dashed border-stone-300 rounded-xl cursor-pointer hover:border-amber-500 hover:bg-white/20 bg-white/5 backdrop-blur-sm transition-all flex flex-col items-center justify-center p-4 text-center">
+                  <div className="w-10 h-10 rounded-full bg-amber-500/10 border border-amber-500/30 flex items-center justify-center mb-2.5">
+                    <Plus className="w-5 h-5 text-amber-600" />
+                  </div>
+                  <span className="text-xs font-medium text-stone-700">
+                    Upload Outfit Photo
+                  </span>
+                  <span className="text-[11px] text-stone-500 mt-1">
+                    Square full-view frame
                   </span>
                   <input
                     type="file"
                     className="hidden"
                     accept="image/*"
-                    onChange={handleModelUpload}
+                    onChange={handleDressUpload}
                   />
                 </label>
               )}
-            </div>
-            <p className="text-xs text-stone-600 mt-2">
-              Clear, front-facing model photos work best.
-            </p>
-          </div>
 
-          {/* Outfit Reference (Optional) */}
-          <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-stone-200/50 shadow-xl">
-            <h3 className="text-lg font-medium text-stone-800 mb-4 flex items-center gap-2">
-              <Camera className="w-5 h-5 text-amber-500/80" />
-              Outfit Reference (Optional)
-            </h3>
-            {dressPhoto ? (
-              <div className="relative w-full h-32 rounded-lg overflow-hidden border border-stone-700 group">
-                <img
-                  src={dressPhoto.preview}
-                  className="w-full h-full object-cover"
-                  alt="outfit"
-                />
-                <button
-                  onClick={() => setDressPhoto(null)}
-                  className="absolute top-2 right-2 bg-black/60 text-white rounded-full p-1 hover:bg-amber-600 transition-colors"
-                >
-                  <X className="w-4 h-4" />
-                </button>
+              <div className="flex-1 text-center sm:text-left space-y-2.5">
+                <p className="text-xs text-stone-600 leading-relaxed">
+                  {dressPhoto
+                    ? "Full outfit reference loaded. Your entire attire is displayed without cropping so all details are captured accurately."
+                    : "Upload a gown, suit, or casual outfit reference. The square frame keeps the full attire visible without truncation."}
+                </p>
+                {dressPhoto && (
+                  <label className="inline-flex items-center gap-1.5 text-xs font-medium text-amber-700 hover:text-amber-600 cursor-pointer underline underline-offset-4 transition-colors">
+                    Replace outfit image
+                    <input
+                      type="file"
+                      className="hidden"
+                      accept="image/*"
+                      onChange={handleDressUpload}
+                    />
+                  </label>
+                )}
               </div>
-            ) : (
-              <label className="flex items-center justify-center w-full h-20 border-2 border-dashed border-stone-700 rounded-lg cursor-pointer hover:border-amber-500 hover:bg-stone-800/50 transition-all">
-                <span className="text-sm text-stone-600">
-                  Click to upload outfit/attire reference photo
-                </span>
-                <input
-                  type="file"
-                  className="hidden"
-                  accept="image/*"
-                  onChange={handleDressUpload}
-                />
-              </label>
-            )}
+            </div>
           </div>
 
           {/* Vibe Selection */}
@@ -281,8 +346,8 @@ const PreWeddingGen: React.FC<PreWeddingGenProps> = ({ onGenerateSuccess }) => {
         </div>
 
         {/* Right Column: Preview */}
-        <div className="lg:col-span-7">
-          <div className="h-full bg-white/10 backdrop-blur-md rounded-3xl border border-stone-200/50 shadow-2xl p-2 md:p-6 flex flex-col min-h-[500px]">
+        <div className="lg:col-span-7 lg:sticky lg:top-24">
+          <div className="bg-white/10 backdrop-blur-md rounded-3xl border border-stone-200/50 shadow-2xl p-3 md:p-6 flex flex-col min-h-[540px] lg:min-h-[680px]">
             <div className="flex-1 bg-white/5 backdrop-blur-sm rounded-2xl border border-stone-200 flex items-center justify-center overflow-hidden relative shadow-inner">
               {isGenerating ? (
                 <div className="text-center space-y-6 max-w-sm px-4">
