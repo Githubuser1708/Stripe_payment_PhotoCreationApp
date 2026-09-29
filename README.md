@@ -62,7 +62,7 @@ Workflow Diagram below
 ## Family Photos 
 
 <div align="centre">
-<img width="1200" height="900" alt="family" src="https://github.com/Githubuser1708/Stripe_payment_PhotoCreationApp/blob/main/blob/fam4.png"/>
+<img width="1200" height="900" alt="family" src="https://github.com/Githubuser1708/Stripe_payment_PhotoCreationApp/blob/main/blob/example4.png"/>
 </div>
 
 
