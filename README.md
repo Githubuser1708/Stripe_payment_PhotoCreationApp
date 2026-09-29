@@ -59,17 +59,27 @@ Workflow Diagram below
 ### Example of the CinematicPhoto App UI and Generated Photos based on uploaded sample photos
 
 
-## Family Photos 
+## Family and wedding  Photos 
 
 <div align="centre">
-<img width="1200" height="900" alt="family" src="https://github.com/Githubuser1708/Stripe_payment_PhotoCreationApp/blob/main/blob/example4.png"/>
+<img width="1200" height="900" alt="wedding" src="https://github.com/Githubuser1708/Stripe_payment_PhotoCreationApp/blob/main/blob/example4.png"/>
+</div>
+
+
+<div align="centre">
+<img width="1200" height="900" alt="wedding" src="https://github.com/Githubuser1708/Stripe_payment_PhotoCreationApp/blob/main/blob/example1.png"/>
+</div>
+
+
+<div align="centre">
+<img width="1200" height="900" alt="family" src="https://github.com/Githubuser1708/Stripe_payment_PhotoCreationApp/blob/main/blob/family3.png"/>
 </div>
 
 
 <div align="centre">
 <img width="1200" height="900" alt="Babyshoot" src="https://github.com/Githubuser1708/Stripe_payment_PhotoCreationApp/blob/main/blob/babyp.png"/>
 </div>
-</>
+
 
 
 
