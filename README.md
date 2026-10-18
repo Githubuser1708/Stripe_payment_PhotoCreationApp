@@ -19,11 +19,11 @@ The application combines:
 The result is a new AI-generated image that places the person in a cinematic environment, wearing the selected outfit and posing naturally according to the selected vibe, with custom prompt to fine tune the details of the photo.
 
 ## **Workflow of the PhotoCreation with Stripe Payment (Test Sandbox)**
-## 🧠 How It Works 
+## 🧠 How It Works (Click Below Image to View DEMO VIDEO) 
 
 <p align="left">
   <a href="https://storage.googleapis.com/stripevideo/StripeProject.mp4">
-    <img src="https://github.com/Githubuser1708/Stripe_payment_PhotoCreationApp/blob/main/blob/stripepayment.png" alt="Project Demo Video" width="700">
+    <img src="https://github.com/Githubuser1708/Stripe_payment_PhotoCreationApp/blob/main/blob/stripepayment1.png" alt="Project Demo Video" width="700" height="500">
   </a>
 </p>
 
