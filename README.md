@@ -21,6 +21,8 @@ The result is a new AI-generated image that places the person in a cinematic env
 ## **Workflow of the PhotoCreation with Stripe Payment (Test Sandbox)**
 ## 🧠 How It Works 
 
+## [Watch the demo video](./blob/StripeProject.mp4)
+
 1. User generates a photo. 
 2. Store the full-resolution image securely in private Google Cloud Storage (GCS_Bucket_Name) . 
 5. User clicks "Download High Res". 
