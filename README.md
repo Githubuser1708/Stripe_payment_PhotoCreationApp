@@ -132,8 +132,6 @@ It then generates a cinematic image showing the person wearing the selected outf
 Users can enter the testing Card Payment (Test mode) details provide by Stripe url https://docs.stripe.com/testing 
 Upon entering the card payment and successful payment verification
 
-
-
-
 ### 🖼️ Upon Successful Stripe Payment, User allowed to Download the high resolution image
 
+End of description
